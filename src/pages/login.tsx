@@ -1,6 +1,5 @@
 import { LoginForm } from "@/components/loginForm";
 
-
 function LoginPage() {
 
     return (
@@ -16,6 +15,7 @@ function LoginPage() {
                 {/* Right side login form */}
                 <div className="flex-[4] p-20 my-auto">
                     <LoginForm />
+
                 </div>
             </div>
         </>

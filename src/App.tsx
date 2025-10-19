@@ -8,7 +8,7 @@ import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
 import { AuthProvider } from './context/AuthContext';
 
-import { Navbar } from './components/navbar';
+import { Toaster } from './components/ui/sonner';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +32,7 @@ function App() {
   return (
     <AuthProvider>
       <RouterProvider router={router} />
+      <Toaster />
     </AuthProvider>
   )
 }

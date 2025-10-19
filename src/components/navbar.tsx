@@ -1,12 +1,15 @@
 import { Link } from "react-router";
 import { Button } from "./ui/button";
 import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 
 export function Navbar() {
     const { user, logout } = useAuth();
 
     const handleLogout = async () => {
         await logout();
+        toast.success("Logged out successfully");
+        window.location.href = "/";
     };
 
     return (

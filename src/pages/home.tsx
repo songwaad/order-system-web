@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { Navbar } from "../components/navbar";
 
 function HomePage() {

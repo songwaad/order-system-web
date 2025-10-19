@@ -7,10 +7,10 @@ import { Spinner } from "./ui/spinner";
 import { Link } from "react-router";
 
 import { apiRegister } from "@/api/auth";
+import { toast } from "sonner";
 
 export function RegisterForm() {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
     const [passwordDoNotMatch, setPasswordDoNotMatch] = useState<string | null>(null);
     const [username, setUsername] = useState("username");
     const [email, setEmail] = useState("email@example.com");
@@ -20,7 +20,6 @@ export function RegisterForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError(null);
         setPasswordDoNotMatch(null);
 
         setLoading(true);
@@ -37,14 +36,13 @@ export function RegisterForm() {
             // Registration successful, redirect to login page
             window.location.href = "/login";
         } else {
-            setError(res.error || "Registration failed");
+            toast.error(res.error || "Registration failed");
         }
         setLoading(false);
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            {error && <p className="text-center mb-6 text-red-500">{error}</p>}
             <div className="mb-4">
                 <Label className="mb-2" htmlFor="username">Username</Label>
                 <Input className="p-4"

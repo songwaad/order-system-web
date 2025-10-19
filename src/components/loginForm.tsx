@@ -8,17 +8,17 @@ import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Spinner } from "./ui/spinner";
 
+import { toast } from "sonner";
+
 
 export function LoginForm() {
     const { login } = useAuth();
     const [identity, setIdentity] = useState("example1@email.com");
     const [password, setPassword] = useState("password");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError(null);
         setLoading(true);
 
         const result = await login(identity, password);
@@ -26,14 +26,13 @@ export function LoginForm() {
             // Login successful, redirect or update UI as needed
             window.location.href = "/";
         } else {
-            setError(result.error || "Login failed");
+            toast.error(result.error || "Login failed");
         }
         setLoading(false);
     }
 
     return (
         <form onSubmit={handleSubmit} className="w-full max-w-md">
-            {error && <p className="text-center mb-6 text-red-500">{error}</p>}
 
 
             <div className="mb-4">
