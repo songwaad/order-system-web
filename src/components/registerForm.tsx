@@ -93,7 +93,7 @@ export function RegisterForm() {
 
             </div>
 
-            <Button className="mt-6 w-full" type="submit" disabled={loading}>
+            <Button className="cursor-pointer mt-6 w-full" type="submit" disabled={loading}>
                 {loading ? (<><Spinner />Loading...</>) : "Register"}
             </Button>
             <p className="text-center mt-2">Have an account? <Link className="text-blue-500" to="/login">Login</Link></p>

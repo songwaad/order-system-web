@@ -59,7 +59,7 @@ export function LoginForm() {
                     required />
             </div>
 
-            <Button className="mt-6 w-full" type="submit" disabled={loading}>
+            <Button className="cursor-pointer mt-6 w-full" type="submit" disabled={loading}>
                 {loading ? (<><Spinner />Loading...</>) : "Login"}
             </Button>
             <p className="text-center mt-2">Don't have an account? <Link to="/register" className="text-blue-500">Register</Link></p>

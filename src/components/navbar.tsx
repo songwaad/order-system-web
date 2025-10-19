@@ -20,10 +20,10 @@ export function Navbar() {
                 {user ? (
                     <>
                         <p className="text-sm">Hello, {user.username}</p>
-                        <Button onClick={handleLogout}>Logout</Button>
+                        <Button className="cursor-pointer" onClick={handleLogout}>Logout</Button>
                     </>
                 ) : (
-                    <Link to="/login"><Button>Login</Button></Link>
+                    <Link to="/login"><Button className="cursor-pointer">Login</Button></Link>
                 )}
             </div>
         </nav>
