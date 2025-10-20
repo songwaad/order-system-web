@@ -8,7 +8,10 @@ import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
 import { AuthProvider } from './context/AuthContext';
 
+import { ThemeProvider } from './components/theme-provider';
+
 import { Toaster } from './components/ui/sonner';
+import { ModeToggle } from './components/mode-toggle';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +34,11 @@ if (!root) throw new Error("Failed to find the root element");
 function App() {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+        <Toaster />
+        <ModeToggle />
+      </ThemeProvider>
     </AuthProvider>
   )
 }
