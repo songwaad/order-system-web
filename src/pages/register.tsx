@@ -1,9 +1,9 @@
-import { RegisterForm } from '@/components/registerForm';
+import { RegisterForm } from '@/components/register-form';
 
 function RegisterPage() {
     return (
         <>
-            <div className='mt-10 w-xl mx-auto p-20'>
+            <div className='w-md mx-auto mt-6'>
                 <RegisterForm />
             </div>
         </>
