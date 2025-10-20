@@ -8,6 +8,7 @@ import { Link } from "react-router";
 
 import { apiRegister } from "@/api/auth";
 import { toast } from "sonner";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 export function RegisterForm() {
     const [loading, setLoading] = useState(false);
@@ -42,59 +43,67 @@ export function RegisterForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-                <Label className="mb-2" htmlFor="username">Username</Label>
-                <Input className="p-4"
-                    id="username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Your username"
-                    required />
-            </div>
+        <Card>
+            <CardHeader>
+                <CardTitle>Register</CardTitle>
+                <CardDescription>Create a new account</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-6">
+                        <Label className="mb-2" htmlFor="username">Username</Label>
+                        <Input className="p-4"
+                            id="username"
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Your username"
+                            required />
+                    </div>
 
-            <div className="mb-4">
-                <Label className="mb-2" htmlFor="email">Email</Label>
-                <Input className="p-4"
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="example@email.com"
-                    required />
-            </div>
+                    <div className="mb-6">
+                        <Label className="mb-2" htmlFor="email">Email</Label>
+                        <Input className="p-4"
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="example@email.com"
+                            required />
+                    </div>
 
-            <div className="mb-4">
-                <Label className="mb-2" htmlFor="password">Password</Label>
-                <Input className="p-4"
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="********"
-                    required />
-                <p className="text-sm text-left text-red-500">{passwordDoNotMatch}</p>
+                    <div className="mb-6">
+                        <Label className="mb-2" htmlFor="password">Password</Label>
+                        <Input className="p-4"
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="********"
+                            required />
+                        <p className="text-sm text-left text-red-500">{passwordDoNotMatch}</p>
 
-            </div>
+                    </div>
 
-            <div className="mb-4">
-                <Label className="mb-2" htmlFor="confirm">Confirm Password</Label>
-                <Input className="p-4"
-                    id="confirm"
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="********"
-                    required />
-                <p className="text-sm text-left text-red-500">{passwordDoNotMatch}</p>
+                    <div className="mb-6">
+                        <Label className="mb-2" htmlFor="confirm">Confirm Password</Label>
+                        <Input className="p-4"
+                            id="confirm"
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder="********"
+                            required />
+                        <p className="text-sm text-left text-red-500">{passwordDoNotMatch}</p>
 
-            </div>
+                    </div>
 
-            <Button className="cursor-pointer mt-6 w-full" type="submit" disabled={loading}>
-                {loading ? (<><Spinner />Loading...</>) : "Register"}
-            </Button>
-            <p className="text-center mt-2">Have an account? <Link className="text-blue-500" to="/login">Login</Link></p>
-        </form>
+                    <Button className="cursor-pointer mt-6 w-full" type="submit" disabled={loading}>
+                        {loading ? (<><Spinner />Loading...</>) : "Register"}
+                    </Button>
+                    <p className="text-center mt-2">Have an account? <Link className="text-blue-500" to="/login">Login</Link></p>
+                </form>
+            </CardContent>
+        </Card>
     )
 }
