@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import { Button } from "./ui/button";
 import { useAuth } from "@/context/AuthContext";
 
@@ -12,11 +12,26 @@ export function Navbar() {
 
   return (
     <nav className="fixed left-1/2 px-4 rounded-2xl -translate-x-1/2 top-4 w-5xl flex justify-between p-2 bg-gray-200">
-      <div className="flex items-center space-x-4">
-        <p className="font-bold text-lg">KornKK</p>
-        <Link to="/">
-          <Button variant="ghost">Home</Button>
-        </Link>
+      <div className="flex items-center">
+        <p className="font-bold text-lg me-6">KornKK</p>
+
+        <NavLink to="/" end>
+          {({ isActive }) => (
+            <Button className="cursor-pointer" variant={isActive ? "outline" : "ghost"}>Home</Button>
+          )}
+        </NavLink>
+
+        <NavLink to="/movies">
+          {({ isActive }) => (
+            <Button className="cursor-pointer" variant={isActive ? "outline" : "ghost"}>Movies</Button>
+          )}
+        </NavLink>
+
+        <NavLink to="/about">
+          {({ isActive }) => (
+            <Button className="cursor-pointer" variant={isActive ? "outline" : "ghost"}>About</Button>
+          )}
+        </NavLink>
       </div>
 
       <div className="flex items-center space-x-2">
@@ -28,9 +43,9 @@ export function Navbar() {
             </Button>
           </>
         ) : (
-          <Link to="/login">
-            <Button className="cursor-pointer">Login</Button>
-          </Link>
+          <NavLink to="/login">
+            <Button className="cursor-pointer" variant="default">Login</Button>
+          </NavLink>
         )}
       </div>
     </nav>

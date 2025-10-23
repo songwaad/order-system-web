@@ -18,16 +18,30 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     // ตรวจสอบ auth เมื่อ app load
     useEffect(() => {
         const controller = new AbortController();
-        (async () => {
-            setLoading(true);
-            const res = await apiMe(controller.signal);
-            if (res.ok) {
-                setUser(res.data.user);
-            } else {
-                setUser(null);
+        
+        const checkAuth = async () => {
+            try {
+                setLoading(true);
+                const res = await apiMe(controller.signal);
+                if (res.ok) {
+                    setUser(res.data.user);
+                } else {
+                    setUser(null);
+                }
+            } catch (error) {
+                // Ignore abort errors
+                if (error instanceof Error && error.name !== 'AbortError') {
+                    console.error('Auth check failed:', error);
+                    setUser(null);
+                }
+            } finally {
+                if (!controller.signal.aborted) {
+                    setLoading(false);
+                }
             }
-            setLoading(false);
-        })();
+        };
+
+        checkAuth();
 
         return () => controller.abort();
     }, []);

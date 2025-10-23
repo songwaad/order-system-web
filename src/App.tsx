@@ -6,6 +6,9 @@ import { RouterProvider } from "react-router/dom";
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
+import MoviesPage from './pages/movies';
+import AboutPage from './pages/about';
+
 import { AuthProvider } from './context/AuthContext';
 
 import { ThemeProvider } from './components/theme-provider';
@@ -25,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/movies",
+    element: <MoviesPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   }
 ]);
 
